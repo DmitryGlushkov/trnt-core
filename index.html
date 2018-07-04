@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>t-parser</title>
+</head>
+<body>
+
+<script>
+    function send() {
+        var command = {
+            type: 'scrap',
+            level: 'forum',
+            id: document.getElementById('f_id').value,
+        };
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function(event){
+            if(this.readyState == XMLHttpRequest.DONE) {
+                 console.log(this.responseText);
+            }
+        };
+        xhttp.open('POST', window.location.origin , true);
+        xhttp.send(JSON.stringify(command));
+    }
+</script>
+Forum ID:
+<input type="text" id="f_id" value="1418">
+<input type="submit" value="send" onclick="javascript:send()">
+</body>
+</html>
